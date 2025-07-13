@@ -5,8 +5,9 @@ import { StoryContext } from './config/consts'
 import { clearMessages, getMessages } from './twitchScrapper'
 import { sentToHook } from './discordIntegration'
 import { initOverlayAPI } from './api'
+import { sentToOverlay } from './overlaySignals'
 
-const INTERVAL = 5000;
+const INTERVAL = 60000 * 30; // 30 minutes
 const context = StoryContext.cyberpunk
 
 console.log('Bienvenido a la interfaz de TwitchTales Bot\n');
@@ -24,17 +25,17 @@ setInterval(async () => {
     const sentimentSum = positiveMessages - negativeMessages; // TODO: Adjust arithmetics for neutral messages
 
     if (sentimentSum > 0) {
-      const story = generateStory({ sentiment: 'positive', context });
+      const story = await generateStory({ sentiment: 'positive', context });
       sentToHook(story);
-      // TODO: sentToOverlay(story);
+      sentToOverlay(story);
     } else if (sentimentSum < 0) {
-      const story = generateStory({ sentiment: 'negative', context });
+      const story = await generateStory({ sentiment: 'negative', context });
       sentToHook(story);
-      // TODO: sentToOverlay(story);
+      sentToOverlay(story);
     } else {
-      const story = generateStory({ sentiment: 'neutral', context });
+      const story = await generateStory({ sentiment: 'neutral', context });
       sentToHook(story);
-      // TODO: sentToOverlay(story);
+      sentToOverlay(story);
     }
   }
 
