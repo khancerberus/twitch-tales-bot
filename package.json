@@ -13,6 +13,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.8.0",
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/node": "^24.0.13",
     "@types/tmi.js": "^1.8.6",
@@ -24,8 +25,10 @@
     "@nlpjs/core": "5.0.0-alpha.5",
     "@nlpjs/lang-es": "5.0.0-alpha.5",
     "@nlpjs/sentiment": "5.0.0-alpha.5",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
+    "openai": "^5.9.0",
     "tmi.js": "^1.8.5"
   }
 }
