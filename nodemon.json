@@ -1,0 +1,12 @@
+{
+    "watch": [
+        "src",
+        "tsconfig.json"
+    ],
+    "ext": "ts",
+    "ignore": [
+        "dist",
+        "node_modules"
+    ],
+    "exec": "ts-node --project tsconfig.json -r dotenv/config ./src/main.ts"
+}
